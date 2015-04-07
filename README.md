@@ -1,5 +1,11 @@
 ## Work in progress, I've just discover Polymer few days ago.
 
+If you want to test, no online version, yet.
+
+Use " bower install Polymer/polymer#^0.5.5 "
+
+Gruntfile contains "connect" to launch a virtual server on localhost:3000
+
 # polymer-resume-app
 
 First try with Google Polymer
