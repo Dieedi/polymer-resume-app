@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Jeremy POUILLOT - Resume over App</title>
+
+    <meta name="viewport"
+        content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <!-- Call to webcomponents -->
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+    <!-- Import Roboto font -->
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
+
+    <!-- Import core components -->
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
+    <link rel="import" href="bower_components/core-animated-pages/transitions/slide-from-right.html">
+    <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+    <link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
+    <link rel="import" href="bower_components/core-icon-button/core-icon-button.html">
+    <link rel="import" href="bower_components/core-icon/core-icon.html">
+    <link rel="import" href="bower_components/core-icons/core-icons.html">
+    <link rel="import" href="bower_components/core-menu/core-menu.html">
+    <link rel="import" href="bower_components/paper-item/paper-item.html">
+    <link rel="import" href="bower_components/flatiron-director/flatiron-director.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="import" href="bower_components/core-a11y-keys/core-a11y-keys.html">
+    <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+    <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+    <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+    <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+    <link rel="stylesheet" href="styles.css" shim-shadowdom>
+</head>
+
+<body unresolved fullbleed>
+<!-- <template is="auto-binding">
+    <core-header-panel mode="waterfall-tall">
+        <nav>
+            <core-menu valueattr="hash" selected="{{route}}"
+                        on-core-select="{{menuItemSelected}}">
+                <template repeat="{{page in pages}}">
+                    <paper-item hash="{{page.hash}}" noink>
+                    <paper-ripple fit="" id="ripple"></paper-ripple>
+
+                    <div class="button-content" center="" horizontal="" layout="" relative="">
+                        <core-icon icon="label-outline"></core-icon>
+                        <a href="#{{page.hash}}">{{page.name}}</a>
+                    </div>
+                    </paper-item>
+                </template>
+            </core-menu>
+        </nav>
+        <div class="core-header animate">
+            <core-toolbar tool flex>
+                <style>
+                    core-toolbar {
+                        background: none;
+                        color: white;
+                    }
+                </style>
+                <div class="icon-button">
+                <style>
+                    .icon-button {
+                      position: relative;
+                      display: inline-block;
+                      width: 56px;
+                      height: 56px;
+                    }
+                </style>
+                <core-menu-button icon="menu"></core-menu-button>
+                <core-dropdown class="dropdown"
+                    <!-- <core-icon icon="menu" aria-labe="menu" role="img">
+                    <style>
+                        core-icon {
+                            margin: 16px;
+                        }
+                    </style>
+                    </core-icon>
+                    <paper-ripple class="circle recenteringTouch" fit></paper-ripple> -->
+                <!--</div>
+                <div flex>Jeremy Pouillot</div>
+                <!-- should link to pdf version -->
+                <!--<core-icon-button icon="file-download"></core-icon-button>
+            </core-toolbar>
+
+        </div>
+
+        <div id="main" layout vertical flex>
+            <div id="container">
+                <div layout horizontal center-center fit>
+
+                    <core-animated-pages selected="{{route}}"
+                            valueattr="hash" transitions="slide-from-right">
+                        <template repeat="{{page in pages}}">
+                            <section hash="{{page.hash}}" layout vertical center-center>
+                                <div>{{page.name}}</div>
+                            </section>
+                        </template>
+                    </core-animated-pages>
+
+                </div>
+            </div>
+        </div>
+    </core-header-panel>
+</template> -->
+<template is="auto-binding">
+
+        <core-scaffold id="scaffold">
+            <nav>
+                <core-toolbar><span>Single Page Polymer</span></core-toolbar>
+
+                <core-menu valueattr="hash" selected="{{route}}"
+                    on-core-select="{{menuItemSelected}}">
+                    <template repeat="{{page in pages}}">
+                        <paper-item hash="{{page.hash}}" noink>
+                            <paper-ripple fit="" id="ripple"></paper-ripple>
+
+<div class="button-content" center="" horizontal="" layout="" relative="">
+                            <core-icon icon="label-outline"></core-icon>
+                            <a href="#{{page.hash}}">{{page.name}}</a>
+</div>
+                        </paper-item>
+                    </template>
+                </core-menu>
+            </nav>
+
+            <core-toolbar tool flex>
+                <div flex>Jeremy Pouillot</div>
+                <core-icon-button icon="refresh"></core-icon-button>
+                <core-icon-button icon="add"></core-icon-button>
+            </core-toolbar>
+
+            <div layout horizontal fit>
+
+                <core-animated-pages selected="{{route}}"
+                        valueattr="hash" transitions="slide-from-right">
+                    <template repeat="{{page in pages}}">
+                        <section hash="{{page.hash}}" layout vertical>
+                            <div>
+                                <h1>{{page.name}}</h1>
+                                <span>tada</span>
+                            </div>
+                        </section>
+                    </template>
+                </core-animated-pages>
+
+
+            </div>
+        </core-scaffold>
+
+    </template>
+    <!-- data model -->
+    <script>
+        var template = document.querySelector('template[is="auto-binding"]');
+        template.pages = [
+            {name: 'Single', hash: 'one'},
+            {name: 'page', hash: 'two'},
+            {name: 'app', hash: 'three'}
+            ];
+
+        template.menuItemSelected = function(e, detail, sender) {
+            if (detail.isSelected) {
+                this.$ && this.$.scaffold.closeDrawer();
+            }
+        };
+    </script>
+</body>
+
+</html>

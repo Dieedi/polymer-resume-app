@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+}
+
+core-animated-pages {
+  width: 100%;
+}
+
+core-header-panel {
+  height: 100%;
+}
+
+.core-header.tall {
+  height: 180px;
+}
+
+.core-header {
+  height: 60px;
+  background-image: url('wood.jpg');
+  background-position: center center;
+  transition: height 0.5s;
+}
+
+#main {
+  height: 2000px;
+}
